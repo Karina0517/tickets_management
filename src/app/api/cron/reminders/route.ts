@@ -23,7 +23,6 @@ export async function GET(request: NextRequest) {
     const queryKey = searchParams.get("key");
     const secret = process.env.CRON_SECRET;
 
-    // Validamos si coincide con la clave en .env (por Header o por URL)
     const isValid = 
       (secret && authHeader === `Bearer ${secret}`) || 
       (secret && queryKey === secret);
@@ -35,12 +34,12 @@ export async function GET(request: NextRequest) {
     await connectToDB();
 
     // Calcular fecha límite: Tickets creados hace más de 24 horas
-    const twentyFourHoursAgo = new Date(Date.now() - 24 * 60 * 60 * 1000);
+    const OneMinuteAgo = new Date(Date.now() - 1 * 60 * 1000);
 
     // Buscar tickets que sigan "open" y sean viejos
     const staleTickets = await Ticket.find({
       status: "open",
-      createdAt: { $lt: twentyFourHoursAgo },
+      createdAt: { $lt: OneMinuteAgo },
     }).populate("assignedTo");
 
     if (staleTickets.length === 0) {

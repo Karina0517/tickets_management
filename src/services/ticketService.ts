@@ -24,7 +24,6 @@ api.interceptors.response.use(
 );
 
 export const ticketService = {
-  // Obtener todos los tickets (con filtros opcionales)
   async getTickets(filters?: TicketFilters): Promise<ITicketResponse[]> {
     const params = new URLSearchParams();
     

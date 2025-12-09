@@ -157,7 +157,6 @@ const ticketSchema = new Schema<ITicket>(
   }
 );
 
-// Índices para búsquedas y filtros eficientes
 ticketSchema.index({ createdBy: 1, status: 1 });
 ticketSchema.index({ assignedTo: 1, status: 1 });
 ticketSchema.index({ status: 1, priority: 1 });

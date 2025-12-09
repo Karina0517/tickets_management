@@ -1,25 +1,23 @@
 import nodemailer from "nodemailer";
 import { ITicketResponse } from "@/types";
 
-// 1. Configuración del Transporter (Tu nueva configuración)
 const userMail = process.env.MAIL_USER;
 const passMail = process.env.MAIL_PASS;
 
 const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
-  port: 465, // Puerto SSL
-  secure: true, // TRUE para puerto 465
+  port: 465, 
+  secure: true, 
   auth: {
     user: userMail,
     pass: passMail,
   },
 });
 
-// Función genérica de envío (Basada en tu ejemplo)
 async function sendEmail(to: string, subject: string, html: string): Promise<boolean> {
   try {
     if (!userMail || !passMail) {
-      console.log("⚠️ Faltan variables MAIL_USER o MAIL_PASS en .env");
+      console.log(" Faltan variables MAIL_USER o MAIL_PASS en .env");
       return false;
     }
 
@@ -30,19 +28,14 @@ async function sendEmail(to: string, subject: string, html: string): Promise<boo
       html: html,
     });
 
-    console.log(`✅ Email enviado correctamente a: ${to}`);
+    console.log(` Email enviado correctamente a: ${to}`);
     return true;
   } catch (error) {
-    console.error("❌ Error enviando email:", error);
+    console.error(" Error enviando email:", error);
     return false;
   }
 }
 
-// =================================================================
-// Plantillas de Correo para el Sistema de Tickets
-// =================================================================
-
-// 1. Email: Ticket Creado
 export async function sendTicketCreatedEmail(ticket: ITicketResponse): Promise<boolean> {
   const html = `
     <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
@@ -71,7 +64,7 @@ export async function sendTicketCreatedEmail(ticket: ITicketResponse): Promise<b
   );
 }
 
-// 2. Email: Nueva Respuesta de Agente
+//  Nueva Respuesta de Agente
 export async function sendNewCommentEmail(
   ticket: ITicketResponse,
   comment: { message: string; authorName: string }
@@ -101,7 +94,7 @@ export async function sendNewCommentEmail(
   );
 }
 
-// 3. Email: Ticket Cerrado
+//  Ticket Cerrado
 export async function sendTicketClosedEmail(ticket: ITicketResponse): Promise<boolean> {
   const html = `
     <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
@@ -123,7 +116,7 @@ export async function sendTicketClosedEmail(ticket: ITicketResponse): Promise<bo
   );
 }
 
-// 4. Email: Ticket Resuelto
+// Ticket Resuelto
 export async function sendTicketResolvedEmail(ticket: ITicketResponse): Promise<boolean> {
   const html = `
     <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">

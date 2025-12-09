@@ -7,7 +7,7 @@ export interface IUser {
   name: string;
   email: string;
   password: string;
-  cc: string; // Cédula o documento de identidad
+  cc: string; 
   role: UserRole;
   createdAt?: Date | null;
   updatedAt?: Date | null;

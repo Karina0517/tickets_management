@@ -6,10 +6,8 @@ import { sendTicketClosedEmail, sendTicketResolvedEmail } from "@/services/email
 import * as yup from "yup";
 import mongoose from "mongoose";
 
-// En Next.js 15, params es una Promise
 type RouteParams = { params: Promise<{ id: string }> };
 
-// GET - Obtener ticket por ID
 export async function GET(request: NextRequest, props: RouteParams) {
   try {
     const session = await auth();
@@ -21,7 +19,6 @@ export async function GET(request: NextRequest, props: RouteParams) {
       );
     }
 
-    // ✅ CORRECCIÓN: Await params
     const params = await props.params;
     const { id } = params;
 
@@ -44,7 +41,6 @@ export async function GET(request: NextRequest, props: RouteParams) {
       );
     }
 
-    // Si es cliente, solo puede ver sus propios tickets
     if (
       session.user.role === "client" && 
       ticket.createdBy.toString() !== session.user.id
@@ -66,7 +62,6 @@ export async function GET(request: NextRequest, props: RouteParams) {
   }
 }
 
-// PUT/PATCH - Actualizar ticket
 export async function PUT(request: NextRequest, props: RouteParams) {
   try {
     const session = await auth();
@@ -78,7 +73,6 @@ export async function PUT(request: NextRequest, props: RouteParams) {
       );
     }
 
-    // ✅ CORRECCIÓN: Await params
     const params = await props.params;
     const { id } = params;
 
@@ -102,16 +96,13 @@ export async function PUT(request: NextRequest, props: RouteParams) {
 
     const body = await request.json();
 
-    // Validar permisos según rol
     if (session.user.role === "client") {
-      // Clientes solo pueden actualizar ciertos campos de sus tickets
       if (ticket.createdBy.toString() !== session.user.id) {
         return NextResponse.json(
           { error: "No tienes permiso para modificar este ticket" },
           { status: 403 }
         );
       }
-      // Los clientes no pueden cambiar status a resolved/closed, ni asignar agentes
       if (body.status === "resolved" || body.status === "closed" || body.assignedTo) {
         return NextResponse.json(
           { error: "No tienes permiso para realizar esta acción" },
@@ -202,7 +193,6 @@ export async function PUT(request: NextRequest, props: RouteParams) {
   }
 }
 
-// DELETE - Eliminar ticket (opcional)
 export async function DELETE(request: NextRequest, props: RouteParams) {
   try {
     const session = await auth();
@@ -221,7 +211,6 @@ export async function DELETE(request: NextRequest, props: RouteParams) {
       );
     }
 
-    // ✅ CORRECCIÓN: Await params
     const params = await props.params;
     const { id } = params;
 

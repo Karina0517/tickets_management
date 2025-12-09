@@ -43,7 +43,7 @@ export default function AgentLayout({
                 variant="outline"
                 size="sm"
                 onClick={logout}
-                className="border-white text-white hover:bg-blue-700"
+                className="border-white text-blue-800"
               >
                 Cerrar Sesión
               </Button>

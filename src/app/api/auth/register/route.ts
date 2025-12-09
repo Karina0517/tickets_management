@@ -45,7 +45,7 @@ export async function POST(request: NextRequest) {
       email: validatedData.email.toLowerCase().trim(),
       password: hashedPassword,
       cc: validatedData.cc.trim(),
-      role: validatedData.role || "client", // Por defecto es cliente
+      role: validatedData.role || "client",
     });
 
     // Retornar usuario sin la contraseña

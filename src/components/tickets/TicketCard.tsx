@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 
 interface TicketCardProps {
   ticket: ITicketResponse;
-  basePath: string; // "/client" o "/agent"
+  basePath: string; 
 }
 
 export default function TicketCard({ ticket, basePath }: TicketCardProps) {

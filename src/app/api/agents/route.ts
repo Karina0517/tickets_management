@@ -3,7 +3,6 @@ import { connectToDB } from "@/lib/dbConnection";
 import User from "@/models/User";
 import { auth } from "@/auth";
 
-// GET - Listar agentes (para asignar a tickets)
 export async function GET() {
   try {
     const session = await auth();

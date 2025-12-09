@@ -5,7 +5,6 @@ import { auth } from "@/auth";
 import { sendTicketCreatedEmail } from "@/services/emailService";
 import * as yup from "yup";
 
-// GET - Listar tickets
 export async function GET(request: NextRequest) {
   try {
     const session = await auth();
@@ -64,7 +63,6 @@ export async function GET(request: NextRequest) {
   }
 }
 
-// POST - Crear ticket
 export async function POST(request: NextRequest) {
   try {
     const session = await auth();
