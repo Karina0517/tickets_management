@@ -89,31 +89,37 @@ contraseña: 123456
 
 ## Flujo de la Aplicación
 
-![alt text](image.png)
+<img width="1592" height="933" alt="image" src="https://github.com/user-attachments/assets/63a78580-b9d3-4269-afa0-2c109b487fe1" />
+
 
 ### 1. Creación de Ticket (Cliente)
 El cliente reporta un incidente llenando el formulario con título, descripción y prioridad.
 
-![alt text](image-1.png)
+<img width="1592" height="933" alt="image" src="https://github.com/user-attachments/assets/1e5d73f4-6072-4611-81a9-dce585bf32b2" />
 
-![alt text](image-2.png)
+<img width="1592" height="933" alt="image" src="https://github.com/user-attachments/assets/876e0854-2eda-4b72-9848-c839cd545c4a" />
+
+
 
 ### 2. Gestión de Tickets (Agente)
 El agente visualiza el listado global, aplica filtros y gestiona los estados de los tickets.
 
-![alt text](image-3.png)
-![alt text](image-4.png)
+<img width="1592" height="933" alt="image" src="https://github.com/user-attachments/assets/e519b5ad-22be-4f9a-8791-8408c35d9450" />
+
 
 ### 3. Detalle y Comentarios
 Vista detallada donde interactúan el cliente y el agente mediante comentarios.
 
-![alt text](image-5.png)
+<img width="1592" height="933" alt="image" src="https://github.com/user-attachments/assets/a408ab2b-d797-4b77-9cbf-95dc08588d45" />
 
-![alt text](image-6.png)
+<img width="1592" height="933" alt="image" src="https://github.com/user-attachments/assets/a076fe9b-7d02-43b2-a88d-a49f20b20631" />
 
-![alt text](image-7.png)
+<img width="1592" height="933" alt="image" src="https://github.com/user-attachments/assets/c3763af6-c32b-4a78-992a-4fee9bb7ac9a" />
 
-![alt text](image-8.png)
+<img width="1592" height="933" alt="image" src="https://github.com/user-attachments/assets/7e1ae68d-3e19-4204-9fa2-0bcbf7c91f03" />
+
+
+
 ---
 
 ## ⏰ Automatización (Cron Job)
