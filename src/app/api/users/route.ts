@@ -4,7 +4,7 @@ import { connectToDB } from "@/lib/dbConnection";
 import User, { createUserSchema, formatYupErrors } from "@/models/User";
 import * as yup from "yup";
 
-// POST - Crear usuario
+// Crear usuario
 export async function POST(request: NextRequest) {
   try {
     await connectToDB();
@@ -80,13 +80,13 @@ export async function POST(request: NextRequest) {
   }
 }
 
-// GET - Listar usuarios (opcional, útil para ver los usuarios creados)
+// Para ver los usuarios creados
 export async function GET() {
   try {
     await connectToDB();
 
     const users = await User.find({})
-      .select("-password") // Excluir contraseña
+      .select("-password") // No moatrar la contraseña
       .sort({ createdAt: -1 });
 
     return NextResponse.json({ users });

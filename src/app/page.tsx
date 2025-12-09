@@ -14,7 +14,6 @@ export default async function HomePage() {
     }
   }
 
-  // Si no hay sesión, mostrar landing page
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-600 to-blue-800 flex items-center justify-center">
       <div className="text-center text-white">
@@ -26,12 +25,6 @@ export default async function HomePage() {
             className="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition"
           >
             Iniciar Sesión
-          </Link>
-          <Link
-            href="/register"
-            className="bg-transparent border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition"
-          >
-            Registrarse
           </Link>
         </div>
       </div>
